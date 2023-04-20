@@ -66,3 +66,58 @@ export class DocumentC{
 
     }
 }
+export interface users{
+    id: number | null,
+    username: string,
+    password: string,
+    email: string,
+    contact: string,
+    name: string,
+    status: number,
+    role: roles,
+    updated_at: string,
+}
+export class usersC{
+    id: number | null;
+    username: string;
+    password: string;
+    email: string;
+    contact: string;
+    name: string;
+    status: number | null;
+    role: roles;
+    updated_at: string;
+
+    constructor(obj?: usersC){
+        this.id = obj && obj.id || null;
+        this.username = obj && obj.username || "";
+        this.password = obj && obj.password || "";
+        this.email = obj && obj.email || "";
+        this.contact = obj && obj.contact || "";
+        this.name = obj && obj.name || "";
+        this.status = obj && obj.status || null;
+        this.role = obj && obj.role || new rolesC();
+        this.updated_at = obj && obj.updated_at || "";
+    }
+}
+
+export interface roles{
+    id: number | null,
+    slug: string,
+    name: string,
+    description: string,
+}
+
+export class rolesC{
+    id: number | null;
+    slug: string;
+    name: string;
+    description: string;
+
+    constructor(obj?: rolesC){
+        this.id = obj && obj.id || null;
+        this.slug = obj && obj.slug || "";
+        this.name = obj && obj.name || "";
+        this.description = obj && obj.description || "";
+    }
+}

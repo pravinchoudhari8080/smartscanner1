@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Image } from '../allinterface';
+import { AppServiceService } from '../app-service.service';
+
 
 @Component({
   selector: 'app-history',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  public imagearr: Image[] = [];
+  public isWorking: boolean;
+
+  constructor(private service: AppServiceService) { }
 
   ngOnInit(): void {
+    this.getdata()
   }
 
+  getdata(){
+    this.isWorking = true;
+    this.service.getImages().subscribe((res) => {
+      this.imagearr = res;
+      this.isWorking = false;
+    },
+    err=>{
+      this.isWorking = false
+    });
+  }
 }

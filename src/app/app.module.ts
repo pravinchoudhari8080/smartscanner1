@@ -20,8 +20,11 @@ import {SidebarModule} from 'primeng/sidebar';
 import { HistoryComponent } from './history/history.component';
 import { ValidateComponent } from './validate/validate.component';
 import { RejectedComponent } from './rejected/rejected.component';
-import {TableModule} from 'primeng/table';
-import {InputTextModule} from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { WebcamModule } from 'ngx-webcam';
+import { UsersComponent } from './users/users.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import {InputTextModule} from 'primeng/inputtext';
     CameraComponent,
     HistoryComponent,
     ValidateComponent,
-    RejectedComponent
+    RejectedComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,9 @@ import {InputTextModule} from 'primeng/inputtext';
     MenubarModule,
     SidebarModule,
     TableModule,
-    InputTextModule
+    InputTextModule,
+    WebcamModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

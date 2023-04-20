@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.sass']
 })
 export class SearchComponent implements OnInit {
-  public searchImages: Document[] = []
+  public searchImages: Document[] = [];
+  public isWorking: boolean;
   constructor() { }
 
   ngOnInit(): void {

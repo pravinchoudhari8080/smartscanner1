@@ -1,1 +1,81 @@
-<app-navbar></app-navbar>
+<div>
+  <app-navbar></app-navbar>
+  <div class="card cards">
+    <span class="head" style="margin: 10px">
+      <!-- <h4>Approvers Screen</h4> -->
+    </span>
+    <p-table #dt1 [value]="imagearr" dataKey="id" styleClass="p-datatable-customers" responsiveLayout="scroll"
+      [rows]="10" [paginator]="true" [loading]="isWorking">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id" style="min-width: 100px">
+            Id<p-sortIcon field="id"></p-sortIcon>
+          </th>
+          <th pSortableColumn="text">
+            Text <p-sortIcon field="text"></p-sortIcon>
+          </th>
+          <th pSortableColumn="created_at">
+            Created At<p-sortIcon field="created_at"></p-sortIcon>
+          </th>
+          <th>Images</th>
+          <th>Approve</th>
+          <th>Reject</th>
+        </tr>
+        <!-- <tr>
+                    <th>
+                        <input pInputText type="text" (input)="dt1.filter($event.target.value, 'id', 'contains')"
+                            [value]="dt1.filters['id']?.value" placeholder="Search by ID"
+                            class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text"
+                            (input)="dt1.filter($event.target.value, 'created_by', 'contains')"
+                            [value]="dt1.filters['created_by']?.value" placeholder="Search by Name"
+                            class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text"
+                            (input)="dt1.filter($event.target.value, 'approved_by', 'contains')"
+                            [value]="dt1.filters['approved_by']?.value"
+                            placeholder="Search by Name" class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text"
+                            (input)="dt1.filter($event.target.value, 'status', 'contains')"
+                            [value]="dt1.filters['status']?.value" placeholder="Search by Status"
+                            class="p-column-filter">
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr> -->
+      </ng-template>
+      <ng-template pTemplate="body" let-docs>
+        <tr *ngFor="let item of docs.images; let i = index">
+          <td>
+            {{ item.id }}
+          </td>
+          <td>
+            {{ item.text }}
+          </td>
+          <td>
+            {{ item.created_at }}
+          </td>
+          <td>
+            <img src="{{ item.image }}" alt="Image" style="width: 12rem" />
+          </td>
+          <td >
+            <button pButton type="button" class="p-button-success" (click)="submit(docs)" label="Approve"></button>
+          </td>
+          <td >
+            <button pButton type="button" class="p-button-danger" (click)="reject(docs)" label="Reject"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No Documents found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -2,7 +2,7 @@
     [style]="{'background-color': 'black', 'height': '60px', 'border': 'black', 'border-radius': '0', 'position':'sticky', 'top': '0', 'z-index': '999'}">
     <ng-template pTemplate="start">
         <i class="fa fa-bars icons" (click)="display = true" aria-hidden="true"></i>
-        <span class="title">Smart Documentation App</span>
+        <span class="title">Smart Scanner App</span>
     </ng-template>
     <ng-template pTemplate="end">
         <span class="title">{{ time | date: 'dd MMM, yyyy' }} {{ time | date: 'hh:mm:ss a' }}</span>
@@ -15,4 +15,5 @@
     <a (click)="navigate('approve')" class="w3-bar-item w3-button"><i class="fa fa-thumbs-o-up"></i></a>
     <a (click)="navigate('history')" class="w3-bar-item w3-button"><i class="fa fa-history"></i></a>
     <a (click)="navigate('rejected')" class="w3-bar-item w3-button"><i class="fa fa-trash"></i></a>
+    <a (click)="navigate('users')" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 </div>

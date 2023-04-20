@@ -22,23 +22,6 @@ export class NavbarComponent implements OnInit {
     this.route.navigate(['/login'])
   }
   navigate(compName: any) {
-    if (compName == 'upload') {
-      this.route.navigate(['/upload']);
-    }
-    else if (compName == 'approve') {
-      this.route.navigate(['approve'])
-    }
-    else if (compName == 'search') {
-      this.route.navigate(['search'])
-    }
-    else if (compName == 'history') {
-      this.route.navigate(['history'])
-    }
-    else if (compName == 'rejected') {
-      this.route.navigate(['rejected'])
-    }
-    else if (compName == 'validate') {
-      this.route.navigate(['validate'])
-    }
+    this.route.navigate(['/'+compName]);
   }
 }

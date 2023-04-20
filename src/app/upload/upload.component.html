@@ -1,45 +1,75 @@
 <div>
-    <app-navbar></app-navbar>
-    <div class="container">
-        <div class="card m-4">
-            <div class="card-body">
-                <!-- <div class="input-group"> -->
-                <!-- <label class="input-group-text" for="inputGroupFile01">Upload</label>
+  <app-navbar></app-navbar>
+  <div class="container">
+    <div class="card m-4">
+      <div class="card-body">
+        <!-- <div class="input-group"> -->
+        <!-- <label class="input-group-text" for="inputGroupFile01">Upload</label>
                     <input type="file" class="form-control" id="inputGroupFile01"> -->
-                <p-fileUpload name="demo[]" [showUploadButton]="false" (onSelect)="onUpload($event)" [multiple]="true"
-                    accept="image/*" [maxFileSize]="1000000">
-                </p-fileUpload>
-                <!-- </div> -->
+        <p-fileUpload name="demo[]" [showUploadButton]="false" (onSelect)="onUpload($event)" [multiple]="true"
+          accept="image/*" [maxFileSize]="1000000">
+        </p-fileUpload>
+        <!-- </div> -->
+      </div>
+      <!-- <button type="button" class="btn btn-primary col-lg-2 m-3" (click)="save()">Upload</button> -->
+      <button *ngIf="uploadedFiles.length"  class="col-lg-1 m-3" pButton (click)="save()" type="button"
+        label="Upload"></button>
+    </div>
+    <!-- <div> -->
+    <div class="col-lg-12">
+      <button class="col-lg-1 m-3" pButton (click)="showCam()" type="button" label="Click"></button>
+    </div>
+    <div class="card col-lg-12" *ngIf="camera">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-5">
+            <webcam style="margin: auto;" [height]="400" [width]="1000" [trigger]="triggerObservable"
+              (imageCapture)="handleImage($event)">
+            </webcam>
+          </div>
+          <!-- <button class="actionBtn" (click)="triggerSnapshot()">
+                    Click Image
+                  </button> -->
+
+          <div class="col-lg-7">
+            <div class="snapshot" *ngIf="webcamImage" style="margin: auto !important;">
+              <img [src]="webcamImage.imageAsDataUrl" />
             </div>
-            <!-- <button type="button" class="btn btn-primary col-lg-2 m-3" (click)="save()">Upload</button> -->
-            <button *ngIf="uploadedFiles.length" class="col-lg-1 m-3" pButton (click)="save()" type="button"
-                label="Upload"></button>
+          </div>
+          <div class="col-lg-6">
+            <button class="col-lg-2 m-3" pButton (click)="triggerSnapshot()" type="button" label="Click"></button>
+          </div>
+          <div class="col-lg-6">
+            <button class="col-lg-2 m-3" pButton (click)="saveCamera()" type="button" label="Save"></button>
+          </div>
         </div>
-        <!-- <div> -->
-        <div class="card" *ngIf="imagearr.length">
-            <div class="card-body">
-                <div class="row">
-                    <div *ngFor="let items of imagearr; let i = index" class="col-lg-4 mb-3">
-                        <div class="card" style="width: 26rem;">
-                            <img src="{{items.image}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <!-- <h5 class="card-title">Card title</h5> -->
-                                <p class="card-text">
-                                    <textarea style="width: 23.5rem;" rows="5" cols="30" name="text"
-                                        [(ngModel)]="items.text" pInputTextarea></textarea>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <button class="col-lg-1 m-3" pButton (click)="saveConverted()" type="button" label="Save"></button>
-            </div>
-        </div>
-        <!-- <div *ngIf="imagearr.length" class="d-flex justify-content-end">
+      </div>
+
+      <!-- <div *ngIf="imagearr.length" class="d-flex justify-content-end">
             <button class="col-lg-1 m-3" pButton (click)="saveConverted()" type="button" label="Save"></button>
         </div> -->
-        <!-- </div> -->
+      <!-- </div> -->
     </div>
+    <div class="card" *ngIf="imagearr.length">
+      <div class="card-body">
+        <div class="row">
+          <div *ngFor="let items of imagearr; let i = index" class="col-lg-4 mb-3">
+            <div class="card" style="width: 26rem">
+              <img src="{{ items.image }}" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <!-- <h5 class="card-title">Card title</h5> -->
+                <p class="card-text">
+                  <textarea style="width: 23.5rem" rows="5" cols="30" name="text" [(ngModel)]="items.text"
+                    pInputTextarea disabled></textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="col-lg-1 m-3" pButton  (click)="saveConverted()" type="button" label="Save"></button>
+      </div>
+    </div>
+  </div>
 </div>
